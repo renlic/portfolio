@@ -1,1 +1,4 @@
+.DS_Store
 Illustrator Mockups/
+build/generate-index.sh
+build/sync-and-generate.sh
