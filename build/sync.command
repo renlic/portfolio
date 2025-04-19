@@ -26,10 +26,11 @@ find "$PORTFOLIO" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png"
     while (( quality >= 10 )); do
       magick "$COMPRESSED/$folder/tmp-$base" -quality $quality "$target"
       size=$(stat -f%z "$target")
-      if (( size <= MAX_BYTES )); then
-        echo "✅ Compressed:   $target_rel (${((size / 1024))} KB)"
-        break
-      fi
+if (( size <= MAX_BYTES )); then
+  size_kb=$((size / 1024))
+  echo "✅ Compressed:   $target_rel (${size_kb} KB)"
+  break
+fi
       (( quality -= 5 ))
     done
 
